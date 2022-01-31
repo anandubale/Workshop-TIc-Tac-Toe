@@ -5,8 +5,11 @@ namespace Tic_tac_Toe_Workshop
     class Program
     {
         static void Main(string[] args)
-        {
-            int GameStatus = -0;
+        {   
+            
+
+
+            int GameStatus = 0;
             int CurrentPlayer = -1;
             char[] GameSpace = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
@@ -14,20 +17,18 @@ namespace Tic_tac_Toe_Workshop
             {
                 CurrentPlayer = ChangePlayer(CurrentPlayer);
 
+                Console.WriteLine("Choose 'X' or 'O' ");
+                Char option = Convert.ToChar(Console.ReadLine());
+                Choose(option,CurrentPlayer);
+
+
+
+                /*
                 RulesandCurrentPlayer(CurrentPlayer);
 
                 DrawGameBoard(GameSpace);
-
-
-
-
-
-
+                */
             } while (GameSpace.Equals(0));
-
-
-
-
 
         }
 
@@ -55,10 +56,37 @@ namespace Tic_tac_Toe_Workshop
 
 
         public static void DrawGameBoard(char[] GameSpace)
-        {
-            Console.WriteLine("");
+        {   
+
+            Console.WriteLine($"\n\t{GameSpace[0]} | {GameSpace[1]} | {GameSpace[2]} ");
+            Console.WriteLine("\t--+---+--");
+            Console.WriteLine($"\t{GameSpace[3]} | {GameSpace[4]} | {GameSpace[5]} ");
+            Console.WriteLine("\t--+---+--");
+            Console.WriteLine($"\t{GameSpace[6]} | {GameSpace[7]} | {GameSpace[8]} ");
         }
 
+        public static char Choose(char option,int player)
+        {
+           
+
+            if (option.Equals('X'))
+            {
+                Console.WriteLine($"Player{player} chooses 'X'.");
+                return 'X';
+            }
+            else if (option.Equals('O'))
+            {
+                Console.WriteLine($"Player{player} chooses 'O'.");
+
+                return 'O';
+            }
+            else
+            {
+                Console.WriteLine("Return Appropriate option!");
+                return 'N';
+            }
+
+        }
 
     }
 }
